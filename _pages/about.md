@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I'm a graduate student working at Michigan State. I work on some of this really cool stuff: 
+I'm a third year student at Michigan State University earing my dual PhD in Computer Science and Ecology, Evolution, and Behavior. I'm a member of the Evolutionary Control of Digital Ecologies lab, and am advised by the amazing [Emily Dolson](https://cse.msu.edu/~dolsonem/). I work on some of this really cool stuff: 
 
 Evolutionary swarm robotics 
 ======

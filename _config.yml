@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Working Title"
+title                    : "Max Foreback"
 title_separator          : "-"
 name                     : &name "Max Foreback"
 description              : &description "A grad student making a website"
@@ -21,11 +21,11 @@ repository               : "Max-Foreback.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "me.jpg"
   name             : "Max Foreback"
   pronouns         : "He/him"  
-  bio              : "Short biography"
-  location         : "Earth"
+  bio              : "Third year PhD student"
+  location         : "East Lansing, MI, USA"
   employer         : "Michigan State University"
   uri              : # URL
   email            : "foreba10@msu.edu" 
