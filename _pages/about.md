@@ -33,7 +33,7 @@ Since I started my PhD, I've been working with [Emily Dolson](https://cse.msu.ed
 
 Emergence and Information Theory
 ======
-Working with Clifford Bohm and Vincint Ragusa, we're developing a new theory of emergence. This paper might eventually see the light of day.
+Working with Clifford Bohm and Vincent Ragusa, we're developing a new theory of emergence. This paper might eventually see the light of day.
 
 <div style="text-align: center;">
 <img src="images/math.JPG" alt="math" width="300"/>

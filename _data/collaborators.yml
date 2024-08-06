@@ -1,0 +1,29 @@
+- name: "Emily Dolson"
+  picture: "emily.jpg"
+  description: "Evolution/Ecology expert. Advisor extraordinaire."
+  link: "https://cse.msu.edu/~dolsonem/"
+
+- name: "Clifford Bohm"
+  picture: "Cliff.jpg"
+  description: "Evolving systems technologist. Blacksmith. Animator. Board game creator. Cliff Bohm."
+  link: "https://cliffbohm.weebly.com/"
+
+- name: "Austin Ferguson"
+  picture: "Austin.png"
+  description: "Now Dr. Ferguson. Potentiation guru and teacher of summer coding camps."
+  link: "http://austinjferguson.com/"
+
+- name: "Shakiba Shahbandegan"
+  picture: "Shakiba.jpg"
+  description: "Has it all figured out. More or less. Bioinformatics & fair machine learning."
+  link: "https://scholar.google.com/citations?user=5jllHRAAAAAJ&hl=en"
+
+- name: "Sydney Leither"
+  picture: "Sydney.png"
+  description: "Expert reader-of-papers. Evolution of cancer resistance and network ecology. Chemical ecology ally."
+  link: "https://scholar.google.com/citations?user=BzcWiSgAAAAJ&hl=en"
+
+- name: "Vincent Ragusa"
+  picture: "Vinny.jpg"
+  description: "Knows a thing or two about a thing or two. Adaptive momentum & information theory."
+  link: "https://scholar.google.com/citations?user=L-Xt8uAAAAAJ&hl=en"
