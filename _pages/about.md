@@ -21,7 +21,7 @@ I recently received the [NSF GRFP](https://www.nsfgrfp.org/) to study the impact
 
 The ecology–evolution continuum and the origin of life
 ======
-Since I started my PhD, I've been working with [Emily Dolson](https://cse.msu.edu/~dolsonem/), [Sydney Leither](https://scholar.google.com/citations?user=BzcWiSgAAAAJ&hl=en), and the [Baum lab](https://baumlab.botany.wisc.edu/) to investigate pre-genetic adaptive change. While the Baum lab does some super interesting lab work, I work on the comutational side, modeling systems that could be representative of the eraly interactions of pre-biotic chemicals. A great in depth summary of this framework can be found in *The ecology–evolution continuum and the origin of life* by Baum et al. 2023. 
+Since I started my PhD, I've been working with [Emily Dolson](https://cse.msu.edu/~dolsonem/), [Sydney Leither](https://scholar.google.com/citations?user=BzcWiSgAAAAJ&hl=en), and the [Baum lab](https://baumlab.botany.wisc.edu/) to investigate pre-genetic adaptive change. While the Baum lab does some super interesting lab work, I work on the computational side, modeling systems that could be representative of the early interactions of pre-biotic chemicals. A great in depth summary of this framework can be found in *The ecology–evolution continuum and the origin of life* by Baum et al. 2023. 
 
 <div style="text-align: center;">
 <img src="images/eco-evo.jpg" alt="eco"/>
