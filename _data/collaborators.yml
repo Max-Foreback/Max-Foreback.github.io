@@ -3,6 +3,11 @@
   description: "Evolution/Ecology expert. Advisor extraordinaire."
   link: "https://cse.msu.edu/~dolsonem/"
 
+- name: "Julie Rolla"
+  picture: "julie.jpg"
+  description: "Radio Astrophysics | Instrumentalist | Scientist"
+  link: "https://cse.msu.edu/~dolsonem/"
+
 - name: "Clifford Bohm"
   picture: "Cliff.jpg"
   description: "Evolving systems technologist. Blacksmith. Animator. Board game creator. Cliff Bohm."
@@ -27,3 +32,8 @@
   picture: "Vinny.jpg"
   description: "Knows a thing or two about a thing or two. Adaptive momentum & information theory."
   link: "https://scholar.google.com/citations?user=L-Xt8uAAAAAJ&hl=en"
+
+- name: "Alexander Lalejini"
+  picture: "alex.png"
+  description: "Assistant Professor at Grand Valley State University. Chemical ecology ally."
+  link: "https://lalejini.com/"

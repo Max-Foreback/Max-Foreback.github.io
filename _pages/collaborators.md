@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-Here are some of the great people I work with
+I work with some pretty great people, here are a few:
 ======
 &nbsp;
 <style>
