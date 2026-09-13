@@ -6,7 +6,7 @@ repository  : "Max-Foreback.github.io"
 
 author:
   name          : "Max Foreback"
-  bio           : "Third year PhD student"
+  bio           : "PhD student · Lead developer, Nebulous/ECLIPSE"
   location      : "East Lansing, MI, USA"
   employer      : "Michigan State University"
   email         : "foreba10@msu.edu"
@@ -20,6 +20,7 @@ include:
 exclude:
   - README.md
   - LICENSE
+  - .claude
 
 # Defaults
 defaults:
