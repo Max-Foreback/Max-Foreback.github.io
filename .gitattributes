@@ -1,0 +1,6 @@
+# Binary assets — never touch line endings on these.
+*.stl binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary

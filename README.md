@@ -4,14 +4,18 @@ My personal site, built as a small hand-written Jekyll site (no theme, no build 
 
 ## Structure
 
-- `_config.yml` — site title/description and author info shown around the site
-- `_data/navigation.yml` — top nav links
-- `_data/collaborators.yml`, `_data/awards.yml`, `_data/publications.yml` — the content behind those three pages; edit these instead of touching HTML
-- `_pages/` — the actual pages (home, publications, collaborators, awards, 404), written in Markdown with a little inline HTML for images/figures
-- `_layouts/default.html` + `_includes/head.html`, `header.html`, `footer.html` — the whole page shell
+- `_config.yml` — site title/description, author info shown around the site, and the `work` collection definition
+- `_data/navigation.yml` — nav links
+- `_data/collaborators.yml`, `_data/awards.yml`, `_data/publications.yml` — the content behind those pages; edit these instead of touching HTML
+- `_pages/` — home, publications, collaborators, awards, teaching, 404 — written in Markdown with a little inline HTML for images/figures/components
+- `_work/` — one file per past/side project (e.g. swarm robotics, GENETIS); each becomes both a homepage card and its own page at `/work/<slug>/` with a prev/next pager. Front matter: `title`, `order` (sort position), `thumbnail`, `summary` (used on the homepage card); the body is the full write-up. Add a new project by adding a new file here — nothing else needs to change.
+- `_layouts/default.html` (shell) and `work.html` (chains to `default`, adds the back-link + prev/next pager) + `_includes/head.html`, `sidebar.html` (nav/socials/theme toggle, persistent on desktop)
 - `assets/css/main.css` — all styling, including the light/dark theme variables
 - `assets/js/theme.js` — the dark-mode toggle
+- `assets/js/stl-viewer.js` + `assets/js/vendor/three/` — the interactive 3D model viewer (see below)
+- `assets/models/<name>/` — staged STL frame sequences for the 3D viewer
 - `images/` — photos and figures used across the site
+- `utils/` — one-off/maintenance scripts, not part of the site build
 
 ## Adding a project image or GIF
 
@@ -26,13 +30,42 @@ Drop the file in `images/` and reference it from a page using the shared `.figur
 
 GIFs work exactly like static images here — just point an `<img>` at a `.gif` file and it will autoplay.
 
+## Adding an interactive STL sequence (evolved-design viewer)
+
+For a numbered sequence of STL frames (e.g. one evolved individual per generation) that you want people to be able to rotate/zoom and scrub through, rather than a flat image/GIF:
+
+1. Get the STL files into one folder (or a zip), named so a number appears before `_mesh.stl` (e.g. `12_mesh.stl`) — that number sets frame order.
+2. Stage them: `ruby utils/stage_stl_sequence.rb <path-to-zip-or-folder> <name>`. This copies/renumbers them into `assets/models/<name>/frame-0001.stl`, `frame-0002.stl`, ... plus a `manifest.json` the viewer reads.
+3. Drop this wherever you want the viewer to appear:
+   ```html
+   <div class="stl-viewer" data-model="{{ '/assets/models/<name>/' | relative_url }}">
+     <div class="stl-viewer__canvas-wrap">
+       <canvas class="stl-viewer__canvas"></canvas>
+       <p class="stl-viewer__status">Loading…</p>
+     </div>
+     <div class="stl-viewer__controls">
+       <button type="button" class="stl-viewer__play" aria-label="Play">&#9654;</button>
+       <input type="range" class="stl-viewer__slider" min="1" max="1" value="1" step="1" aria-label="Generation">
+       <span class="stl-viewer__label">Gen 1</span>
+     </div>
+   </div>
+   ```
+4. On any page that uses it, make sure the import map + module script are present once (see `_pages/about.md` for the exact snippet — it maps the bare `"three"` import to the vendored copy in `assets/js/vendor/three/`).
+
+The viewer (`assets/js/stl-viewer.js`) centers and rescales every frame to the same size, so generations of very different physical size stay visually comparable. Multiple viewers can exist on one page; each is independent.
+
+**Repo size note:** STL frame sequences are not small (this first one is ~68MB across 129 files). That's fine for a personal repo/GitHub Pages, but if this gets used a lot, worth revisiting — converting to compressed glTF instead of raw STL would shrink this a lot, but needs tooling (Blender or Node + `gltf-pipeline`) that isn't set up here yet.
+
 ## Running locally
 
-GitHub Pages builds this with Jekyll automatically on push, but to preview changes before pushing:
+GitHub Pages builds this with Jekyll automatically on push. To preview locally on Windows, install Ruby via [RubyInstaller](https://rubyinstaller.org/downloads/) (get the **Ruby+Devkit** build, and say yes to the MSYS2/MinGW toolchain step — needed for native gems), then:
 
 ```
 bundle install
-bundle exec jekyll serve -l -H localhost
+bundle exec jekyll serve -H localhost -P 4000
 ```
 
-Ruby is required. On Windows, the easiest path is via WSL (`wsl --install`, then run the commands above inside it); Ruby-for-Windows works too but is more prone to native gem build issues.
+Open `http://localhost:4000`. Notes:
+- The `Gemfile` intentionally does **not** use the `github-pages` gem — it pins an old Jekyll that breaks on current Ruby (missing stdlib gems like `csv`/`base64`). We use plain `gem "jekyll"` instead; GitHub's actual Pages build uses its own separate toolchain regardless of what's here, so this only affects local preview.
+- `wdm`/`hawkins` (Windows file-watching / browser auto-reload) are commented out in the `Gemfile` for the same reason — Jekyll still rebuilds on save, you just have to refresh the browser tab yourself.
+- **Editing `_config.yml` requires restarting the server** — file-watch auto-regeneration does not pick up config changes, only content/asset changes.

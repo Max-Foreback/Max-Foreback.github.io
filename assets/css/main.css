@@ -380,33 +380,68 @@ a.project-card-link:hover {
   }
 }
 
-/* Evolutionary-run GIF placeholder: staggered pulsing bars stand in for
-   individuals changing over generations until real GIFs are dropped in. */
-.evo-placeholder {
+/* Interactive STL sequence viewer (assets/js/stl-viewer.js) — drag to
+   orbit/zoom, slider scrubs through numbered frames (e.g. generations). */
+.stl-viewer__canvas-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 170px;
+  touch-action: none;
+}
+.stl-viewer__canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+}
+.stl-viewer__canvas:active { cursor: grabbing; }
+.stl-viewer__status {
+  position: absolute;
+  inset: 0;
   display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  height: 170px;
-  padding: 24px 20px 0;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  pointer-events: none;
 }
-.evo-placeholder span {
+
+.stl-viewer__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 0;
+}
+.stl-viewer__play {
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+.stl-viewer__play:hover { border-color: var(--accent); color: var(--accent); }
+.stl-viewer__slider {
   flex: 1;
-  border-radius: 3px 3px 0 0;
-  background: var(--accent);
-  opacity: 0.55;
-  animation: evo-pulse 2.4s ease-in-out infinite;
+  accent-color: var(--accent);
 }
-.evo-placeholder span:nth-child(1) { animation-delay: 0s; }
-.evo-placeholder span:nth-child(2) { animation-delay: 0.15s; }
-.evo-placeholder span:nth-child(3) { animation-delay: 0.3s; }
-.evo-placeholder span:nth-child(4) { animation-delay: 0.45s; }
-.evo-placeholder span:nth-child(5) { animation-delay: 0.6s; }
-.evo-placeholder span:nth-child(6) { animation-delay: 0.75s; }
-.evo-placeholder span:nth-child(7) { animation-delay: 0.9s; }
-@keyframes evo-pulse {
-  0%, 100% { height: 20%; opacity: 0.4; }
-  50% { height: 90%; opacity: 1; }
+.stl-viewer__label {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  min-width: 4.5em;
+  text-align: right;
 }
+
 .media-note {
   margin: 6px 0 0;
   padding: 0 16px 14px;
