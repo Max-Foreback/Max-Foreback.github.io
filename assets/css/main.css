@@ -388,6 +388,9 @@ a.project-card-link:hover {
   aspect-ratio: 4 / 3;
   min-height: 170px;
   touch-action: none;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
 }
 .stl-viewer__canvas {
   width: 100%;
@@ -403,10 +406,12 @@ a.project-card-link:hover {
   align-items: center;
   justify-content: center;
   margin: 0;
-  color: var(--muted);
+  color: #aab4c0;
+  background: rgba(22, 27, 34, 0.85);
   font-size: 0.85rem;
   pointer-events: none;
 }
+.stl-viewer__status[hidden] { display: none; }
 
 .stl-viewer__controls {
   display: flex;

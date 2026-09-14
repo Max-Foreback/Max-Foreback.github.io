@@ -19,7 +19,7 @@ redirect_from:
 
 <div class="project-card project-card--feature">
   <div class="project-card__media">
-    <div class="stl-viewer" data-model="{{ '/assets/models/eclipse-run/' | relative_url }}">
+    <div class="stl-viewer" data-model="{{ '/assets/models/eclipse-run/' | relative_url }}" data-reverse="true">
       <div class="stl-viewer__canvas-wrap">
         <canvas class="stl-viewer__canvas"></canvas>
         <p class="stl-viewer__status">Loading…</p>

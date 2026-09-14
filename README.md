@@ -36,9 +36,9 @@ For a numbered sequence of STL frames (e.g. one evolved individual per generatio
 
 1. Get the STL files into one folder (or a zip), named so a number appears before `_mesh.stl` (e.g. `12_mesh.stl`) — that number sets frame order.
 2. Stage them: `ruby utils/stage_stl_sequence.rb <path-to-zip-or-folder> <name>`. This copies/renumbers them into `assets/models/<name>/frame-0001.stl`, `frame-0002.stl`, ... plus a `manifest.json` the viewer reads.
-3. Drop this wherever you want the viewer to appear:
+3. Drop this wherever you want the viewer to appear (add `data-reverse="true"` if you want it to play newest-frame-first and count down instead of up — it's per-viewer, not global):
    ```html
-   <div class="stl-viewer" data-model="{{ '/assets/models/<name>/' | relative_url }}">
+   <div class="stl-viewer" data-model="{{ '/assets/models/<name>/' | relative_url }}" data-reverse="true">
      <div class="stl-viewer__canvas-wrap">
        <canvas class="stl-viewer__canvas"></canvas>
        <p class="stl-viewer__status">Loading…</p>
@@ -52,7 +52,7 @@ For a numbered sequence of STL frames (e.g. one evolved individual per generatio
    ```
 4. On any page that uses it, make sure the import map + module script are present once (see `_pages/about.md` for the exact snippet — it maps the bare `"three"` import to the vendored copy in `assets/js/vendor/three/`).
 
-The viewer (`assets/js/stl-viewer.js`) centers and rescales every frame to the same size, so generations of very different physical size stay visually comparable. Multiple viewers can exist on one page; each is independent.
+The viewer (`assets/js/stl-viewer.js`) centers and rescales every frame to the same size, so generations of very different physical size stay visually comparable, renders against a fixed dark viewport background (not the page's light/dark theme colors) so the model reads clearly no matter what color it is or what site theme the visitor has, and auto-plays/loops through the sequence on load — dragging the slider or clicking play/pause takes back control. Multiple viewers can exist on one page; each is independent.
 
 **Repo size note:** STL frame sequences are not small (this first one is ~68MB across 129 files). That's fine for a personal repo/GitHub Pages, but if this gets used a lot, worth revisiting — converting to compressed glTF instead of raw STL would shrink this a lot, but needs tooling (Blender or Node + `gltf-pipeline`) that isn't set up here yet.
 

@@ -17,6 +17,10 @@ const PLAY_INTERVAL_MS = 180;
 
 async function initViewer(root) {
   const base = root.dataset.model;
+  // Play newest-frame-first when true (slider position 1 = last frame on
+  // disk, counting down); set via data-reverse="true" per viewer instance —
+  // not every future sequence will want the same direction.
+  const reverse = root.dataset.reverse === 'true';
   const canvas = root.querySelector('.stl-viewer__canvas');
   const wrap = root.querySelector('.stl-viewer__canvas-wrap');
   const status = root.querySelector('.stl-viewer__status');
@@ -40,21 +44,34 @@ async function initViewer(root) {
   slider.max = total;
   slider.value = 1;
 
+  // Slider "position" (1..total, what the user drags/what autoplay steps
+  // through) vs. the actual frame number on disk — reversed decouples the
+  // two so we don't have to physically renumber files to flip direction.
+  function frameForPosition(position) {
+    return reverse ? total - position + 1 : position;
+  }
+
   // --- Three.js scene setup -------------------------------------------
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  // Fixed, theme-independent viewport background (not the page's --bg) so
+  // the model reads clearly regardless of light/dark mode or its own color.
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
   const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x161b22);
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
   camera.position.set(0, 0.6, 3);
 
-  scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-  const key = new THREE.DirectionalLight(0xffffff, 1.1);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+  const key = new THREE.DirectionalLight(0xffffff, 1.6);
   key.position.set(3, 4, 5);
   scene.add(key);
-  const fill = new THREE.DirectionalLight(0xffffff, 0.4);
-  fill.position.set(-4, -2, -3);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.7);
+  fill.position.set(-4, -1, -3);
   scene.add(fill);
+  const rim = new THREE.DirectionalLight(0x9fd8ff, 0.6);
+  rim.position.set(-2, 3, -4);
+  scene.add(rim);
 
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
@@ -109,32 +126,33 @@ async function initViewer(root) {
     currentMesh = mesh;
   }
 
-  async function getFrame(index) {
-    if (geometryCache.has(index)) return geometryCache.get(index);
-    const filename = pattern.replace('%04d', String(index).padStart(4, '0'));
+  async function getFrame(frameNumber) {
+    if (geometryCache.has(frameNumber)) return geometryCache.get(frameNumber);
+    const filename = pattern.replace('%04d', String(frameNumber).padStart(4, '0'));
     const geometry = await loader.loadAsync(base + filename);
-    geometryCache.set(index, geometry);
+    geometryCache.set(frameNumber, geometry);
     return geometry;
   }
 
   let loadToken = 0;
-  async function showFrame(index) {
+  async function showPosition(position) {
+    const frameNumber = frameForPosition(position);
     const token = ++loadToken;
     status.hidden = false;
     status.textContent = 'Loading…';
     try {
-      const geometry = await getFrame(index);
+      const geometry = await getFrame(frameNumber);
       if (token !== loadToken) return; // a newer request superseded this one
       setMesh(geometry);
       status.hidden = true;
-      label.textContent = `Gen ${index} / ${total}`;
+      label.textContent = `Gen ${frameNumber} / ${total}`;
     } catch (err) {
       if (token === loadToken) status.textContent = 'Failed to load this frame.';
     }
   }
 
   // --- Controls ---------------------------------------------------------
-  slider.addEventListener('input', () => showFrame(Number(slider.value)));
+  slider.addEventListener('input', () => showPosition(Number(slider.value)));
 
   let playTimer = null;
   function stopPlaying() {
@@ -144,21 +162,18 @@ async function initViewer(root) {
     playButton.textContent = '▶';
     playButton.setAttribute('aria-label', 'Play');
   }
-  slider.addEventListener('pointerdown', stopPlaying);
-
-  playButton.addEventListener('click', () => {
-    if (playTimer !== null) {
-      stopPlaying();
-      return;
-    }
+  function startPlaying() {
+    if (playTimer !== null) return;
     playButton.textContent = '⏸';
     playButton.setAttribute('aria-label', 'Pause');
     playTimer = setInterval(() => {
       const next = Number(slider.value) >= total ? 1 : Number(slider.value) + 1;
       slider.value = next;
-      showFrame(next);
+      showPosition(next);
     }, PLAY_INTERVAL_MS);
-  });
+  }
+  slider.addEventListener('pointerdown', stopPlaying);
+  playButton.addEventListener('click', () => (playTimer !== null ? stopPlaying() : startPlaying()));
 
   // --- Render loop --------------------------------------------------------
   function animate() {
@@ -168,7 +183,8 @@ async function initViewer(root) {
   }
   animate();
 
-  showFrame(1);
+  showPosition(1);
+  startPlaying();
 }
 
 function init() {
