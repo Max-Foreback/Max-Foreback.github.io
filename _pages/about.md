@@ -13,7 +13,7 @@ redirect_from:
   </div>
 </div>
 
-<p class="lede">I'm a PhD student at Michigan State University, pursuing a dual PhD in Computer Science and Ecology, Evolution, and Behavior, advised by <a href="https://cse.msu.edu/~dolsonem/">Emily Dolson</a>. My focus has shifted toward hardware design: I'm now the primary software developer and dev-team lead for <a href="https://www.nebulous-design.org/">Nebulous</a>, evolving real spacecraft and instrument hardware. Evolutionary swarm robotics and digital-evolution theory were where I started, and are still active side interests.</p>
+<p class="lede">I'm a PhD student at Michigan State University, pursuing a dual PhD in Computer Science and Ecology, Evolution, and Behavior, advised by <a href="https://cse.msu.edu/~dolsonem/">Emily Dolson</a>. My main focus these days is <a href="https://www.nebulous-design.org/">Nebulous</a>, where I'm the primary software developer and dev-team lead, evolving real spacecraft and instrument hardware. Evolutionary swarm robotics is where I started, and is now past work, below.</p>
 
 ## Current work
 
@@ -65,16 +65,6 @@ redirect_from:
     <div class="project-card__body">
       <h3>The ecology&ndash;evolution continuum</h3>
       <p>With Emily Dolson, Sydney Leither, and the Baum lab, modeled pre-genetic adaptive change &mdash; computational systems representative of early interactions between pre-biotic chemicals. See <em>The ecology&ndash;evolution continuum and the origin of life</em>, Baum et al. 2023.</p>
-    </div>
-  </div>
-
-  <div class="project-card">
-    <div class="project-card__media">
-      <img src="{{ '/images/math.JPG' | relative_url }}" alt="A hand-written derivation">
-    </div>
-    <div class="project-card__body">
-      <h3>Emergence &amp; information theory</h3>
-      <p>With Clifford Bohm and Vincent Ragusa, developing a new theory of emergence. This paper might eventually see the light of day.</p>
     </div>
   </div>
 </div>
