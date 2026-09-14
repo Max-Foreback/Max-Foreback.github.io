@@ -36,7 +36,10 @@ For a numbered sequence of STL frames (e.g. one evolved individual per generatio
 
 1. Get the STL files into one folder (or a zip), named so a number appears before `_mesh.stl` (e.g. `12_mesh.stl`) — that number sets frame order.
 2. Stage them: `ruby utils/stage_stl_sequence.rb <path-to-zip-or-folder> <name>`. This copies/renumbers them into `assets/models/<name>/frame-0001.stl`, `frame-0002.stl`, ... plus a `manifest.json` the viewer reads.
-3. Drop this wherever you want the viewer to appear (add `data-reverse="true"` if you want it to play newest-frame-first and count down instead of up — it's per-viewer, not global):
+3. Drop this wherever you want the viewer to appear. Per-viewer opt-in/opt-out attributes, all optional:
+   - `data-reverse="true"` — play newest-frame-first, counting down instead of up.
+   - `data-wireframe="false"` — skip the triangle-edge overlay (on by default; a plain shape like an antenna doesn't need its facets called out the way a complex evolved structure does).
+   - `data-angled="false"` — start the camera dead-on instead of at the default 45° azimuth.
    ```html
    <div class="stl-viewer" data-model="{{ '/assets/models/<name>/' | relative_url }}" data-reverse="true">
      <div class="stl-viewer__canvas-wrap">
@@ -46,15 +49,17 @@ For a numbered sequence of STL frames (e.g. one evolved individual per generatio
      <div class="stl-viewer__controls">
        <button type="button" class="stl-viewer__play" aria-label="Play">&#9654;</button>
        <input type="range" class="stl-viewer__slider" min="1" max="1" value="1" step="1" aria-label="Generation">
-       <span class="stl-viewer__label">Gen 1</span>
+       <span class="stl-viewer__label">0%</span>
      </div>
    </div>
    ```
 4. On any page that uses it, make sure the import map + module script are present once (see `_pages/about.md` for the exact snippet — it maps the bare `"three"` import to the vendored copy in `assets/js/vendor/three/`).
 
-The viewer (`assets/js/stl-viewer.js`) centers and rescales every frame to the same size, so generations of very different physical size stay visually comparable, renders against a fixed dark viewport background (not the page's light/dark theme colors) so the model reads clearly no matter what color it is or what site theme the visitor has, and auto-plays/loops through the sequence on load — dragging the slider or clicking play/pause takes back control. Multiple viewers can exist on one page; each is independent.
+The viewer (`assets/js/stl-viewer.js`) centers and rescales every frame to the same size, so generations of very different physical size stay visually comparable, renders against a fixed dark viewport background (not the page's light/dark theme colors) so the model reads clearly no matter what color it is or what site theme the visitor has, and auto-plays/loops through the sequence on load — dragging the slider or clicking play/pause takes back control. The progress label shows scrub position as a rounded percentage (0% at the first frame, 100% at the last), independent of `data-reverse`. Multiple viewers can exist on one page; each is independent — see `_pages/about.md`, which runs two side by side (`current-work-row` in `main.css`).
 
-**Repo size note:** STL frame sequences are not small (this first one is ~68MB across 129 files). That's fine for a personal repo/GitHub Pages, but if this gets used a lot, worth revisiting — converting to compressed glTF instead of raw STL would shrink this a lot, but needs tooling (Blender or Node + `gltf-pipeline`) that isn't set up here yet.
+Meshes with inconsistent triangle winding (some STL-writing libraries produce this) render double-sided so they never look hollow/see-through; a uniform "COLOR=..." header some exporters stamp on every file is ignored in favor of a flat gray unless the file's per-vertex colors actually vary.
+
+**Repo size note:** STL frame sequences are not small. That's fine for a personal repo/GitHub Pages at the current scale (~70MB across two datasets), but if this gets used a lot more, worth revisiting — converting to compressed glTF instead of raw STL would shrink this a lot, but needs tooling (Blender or Node + `gltf-pipeline`) that isn't set up here yet.
 
 ## Running locally
 
