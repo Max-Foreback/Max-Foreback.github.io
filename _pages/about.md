@@ -35,36 +35,17 @@ redirect_from:
 ## Past work
 
 <div class="project-grid">
-  <div class="project-card">
+{% assign work_items = site.work | sort: 'order' %}
+{% for item in work_items %}
+  <a class="project-card project-card-link" href="{{ item.url | relative_url }}">
     <div class="project-card__media">
-      <img src="{{ '/images/graphviz.svg' | relative_url }}" alt="An evolved Markov Brain visualized as a node graph">
+      <img src="{{ item.thumbnail | relative_url }}" alt="{{ item.title }}">
     </div>
     <div class="project-card__body">
-      <h3>Evolutionary swarm robotics</h3>
-      <p>Studied how substrate and selection scheme shape the evolution of swarms &mdash; Markov Brains, Cartesian Genetic Programming, and neural networks as interchangeable (and mixable) swarm controllers, evolved with <a href="https://github.com/Hintzelab/MABE">MABE</a>. Funded by an <a href="https://www.nsfgrfp.org/">NSF GRFP</a>; first publication at IEEE SSCI 2025.</p>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.summary }}</p>
+      <p class="project-card__cta">Read more &rarr;</p>
     </div>
-  </div>
-
-  <div class="project-card">
-    <div class="project-card__media">
-      <div class="figure-row figure-row--card">
-        <img src="{{ '/images/NASA_logo.png' | relative_url }}" alt="NASA logo">
-        <img src="{{ '/images/ohio.png' | relative_url }}" alt="Ohio State University logo">
-      </div>
-    </div>
-    <div class="project-card__body">
-      <h3>GENETIS</h3>
-      <p>Worked on the evolutionary-computation side of GENETIS, a genetic algorithm (led by Amy Connolly and Julie Rolla, with NASA JPL and Ohio State) that evolves antennas to detect ultra-high-energy neutrinos from deep space.</p>
-    </div>
-  </div>
-
-  <div class="project-card">
-    <div class="project-card__media">
-      <img src="{{ '/images/eco-evo.jpg' | relative_url }}" alt="Diagram comparing cellular and ecosystem evolution">
-    </div>
-    <div class="project-card__body">
-      <h3>The ecology&ndash;evolution continuum</h3>
-      <p>With Emily Dolson, Sydney Leither, and the Baum lab, modeled pre-genetic adaptive change &mdash; computational systems representative of early interactions between pre-biotic chemicals. See <em>The ecology&ndash;evolution continuum and the origin of life</em>, Baum et al. 2023.</p>
-    </div>
-  </div>
+  </a>
+{% endfor %}
 </div>

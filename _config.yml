@@ -22,12 +22,23 @@ exclude:
   - LICENSE
   - .claude
 
+# Collections
+collections:
+  work:
+    output: true
+    permalink: /work/:path/
+
 # Defaults
 defaults:
   - scope:
       path: ""
     values:
       layout: default
+  - scope:
+      path: ""
+      type: work
+    values:
+      layout: work
 
 # Plugins (GitHub Pages safe list)
 plugins:

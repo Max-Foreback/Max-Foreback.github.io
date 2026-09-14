@@ -216,6 +216,16 @@ h1, h2, h3, h4 {
   font-size: 1.05rem;
 }
 
+.placeholder-note {
+  max-width: 700px;
+  padding: 10px 14px;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
 /* ---------------------------------------------------------------------
    Home page intro (photo + name/bio)
 --------------------------------------------------------------------- */
@@ -332,6 +342,23 @@ h1, h2, h3, h4 {
 }
 .project-card__body p:last-child { margin-bottom: 0; }
 .project-card__body a { font-size: 0.9rem; }
+.project-card__cta {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+
+/* Whole-card link (past-work cards → their detail page) */
+a.project-card-link {
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+a.project-card-link:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
 
 /* Featured card (current work) — media beside body on wide screens */
 .project-card--feature {
@@ -460,6 +487,50 @@ h1, h2, h3, h4 {
   margin: 8px 0 0;
   font-size: 0.95rem;
 }
+
+/* ---------------------------------------------------------------------
+   Work detail pages (individual past/side projects)
+--------------------------------------------------------------------- */
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+}
+.back-link:hover { color: var(--accent); text-decoration: none; }
+
+.work-body {
+  max-width: 720px;
+  font-size: 1.02rem;
+}
+.work-body .figure,
+.work-body .figure-row {
+  margin: 32px 0;
+}
+
+.work-pager {
+  max-width: 720px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.work-pager__link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--muted);
+  max-width: 46%;
+}
+.work-pager__link:hover { color: var(--accent); text-decoration: none; }
+.work-pager__link span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.work-pager__next { margin-left: auto; text-align: right; }
 
 /* ---------------------------------------------------------------------
    Small screens
