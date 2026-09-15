@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<a class="back-link" href="{{ '/' | relative_url }}">&larr; Back to home</a>
+
+<div class="work-body">
+{{ content }}
+</div>
+
+{% assign work_items = site.work | sort: 'order' %}
+{% assign total = work_items.size %}
+{% assign current_index = -1 %}
+{% for item in work_items %}
+  {% if item.url == page.url %}{% assign current_index = forloop.index0 %}{% endif %}
+{% endfor %}
+{% assign prev_index = current_index | minus: 1 %}
+{% assign next_index = current_index | plus: 1 %}
+
+<nav class="work-pager" aria-label="More past work">
+  {% if current_index > 0 %}
+    {% assign prev_item = work_items[prev_index] %}
+    <a class="work-pager__link work-pager__prev" href="{{ prev_item.url | relative_url }}">&larr; <span>{{ prev_item.title }}</span></a>
+  {% else %}
+    <span></span>
+  {% endif %}
+
+  {% if next_index < total %}
+    {% assign next_item = work_items[next_index] %}
+    <a class="work-pager__link work-pager__next" href="{{ next_item.url | relative_url }}"><span>{{ next_item.title }}</span> &rarr;</a>
+  {% endif %}
+</nav>

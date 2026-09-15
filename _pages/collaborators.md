@@ -1,49 +1,18 @@
 ---
-layout: archive
-title: ""
+title: "Collaborators"
 permalink: /collaborators/
-author_profile: true
 redirect_from:
   - /colab
 ---
 
-{% include base_path %}
+<p class="lede">I work with some pretty great people, here are a few:</p>
 
-I work with some pretty great people, here are a few:
-======
-&nbsp;
-<style>
-  .collaborator-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  .collaborator {
-    flex: 1 0 30%;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  .collaborator img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-  .collaborator h2 {
-    margin: 10px 0 5px;
-  }
-  .collaborator p {
-    margin: 0;
-  }
-</style>
-
-<div class="collaborator-container">
-  {% for collaborator in site.data.collaborators %}
-  <div class="collaborator">
-    <img src="{{ site.baseurl }}/images/{{ collaborator.picture }}" alt="{{ collaborator.name }}">
-    <h2><a href="{{ collaborator.link }}">{{ collaborator.name }}</a></h2>
+<ul class="card-grid">
+{% for collaborator in site.data.collaborators %}
+  <li class="card">
+    <img src="{{ '/images/' | append: collaborator.picture | relative_url }}" alt="{{ collaborator.name }}">
+    <h3><a href="{{ collaborator.link }}">{{ collaborator.name }}</a></h3>
     <p>{{ collaborator.description }}</p>
-  </div>
-  {% endfor %}
-</div>
+  </li>
+{% endfor %}
+</ul>

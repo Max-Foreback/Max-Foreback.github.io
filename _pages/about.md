@@ -1,52 +1,99 @@
 ---
 permalink: /
-title: "Welcome!"
-author_profile: true
-redirect_from: 
+redirect_from:
   - /about/
   - /about.html
 ---
 
-I'm a third year student at Michigan State University earing my dual PhD in Computer Science and Ecology, Evolution, and Behavior. I'm a member of the Evolutionary Control of Digital Ecologies lab, and am advised by the amazing [Emily Dolson](https://cse.msu.edu/~dolsonem/). Below are some of my selected projects: 
-
-Evolutionary swarm robotics 
-======
-I received the [NSF GRFP](https://www.nsfgrfp.org/) in 2024 to study the impacts of different substrates and selection schemes on the evolution of swarms. This work is ongoing, with the first publication recently accepted at IEEE SSCI 2025! We show that Markov Brains and Cartesian Genetic Programming can be used to control agents in swarms, along with the traditional Neural Networks. Swarms can even be composed of multiple types of controllers to facilitate specialization! Further work will expand by including more controller types, more complex tasks, and more selection schemes. Made possible by [MABE](https://github.com/Hintzelab/MABE) and with help from [Clifford Bohm](https://cliffbohm.weebly.com/).
-
-![MB](/images/graphviz.svg)
-
-<div style="text-align: center;">
-  <span style="font-size: smaller;">One of my evolved Markov brains, visualized with <a href="https://graphviz.org/">graphviz</a></span>
-</div>
-<br>
-
-The Genetically Evolved NEutrino Telescopes for Improved Sensitivity (GENETIS) project
-======
-Led by Amy Connolly and Julie Rolla, and in collaboration with NASA's [Jet Propulsion Labratory](https://www.jpl.nasa.gov/) and Ohio State University, GENETIS is a genetic algorithm which evolves antennas to detect ultra high energy neutrinos from deep space. I recently began working to improve the evolutionary computation side of this project -- the rest is left to a very talented team of physicists and engineers. 
-
-<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-    <img src="images/NASA_logo.png" alt="NASA" style="width: 200px; height: auto; object-fit: contain;">
-    <img src="images/ohio.png" alt="ohio" style="width: 150px; height: auto; object-fit: contain;">
-</div>
-<br>
-
-The ecology–evolution continuum and the origin of life
-======
-Since I started my PhD, I've been working with [Emily Dolson](https://cse.msu.edu/~dolsonem/), [Sydney Leither](https://scholar.google.com/citations?user=BzcWiSgAAAAJ&hl=en), and the [Baum lab](https://baumlab.botany.wisc.edu/) to investigate pre-genetic adaptive change. While the Baum lab does some super interesting lab work, I work on the computational side, modeling systems that could be representative of the early interactions of pre-biotic chemicals. A great in depth summary of this framework can be found in *The ecology–evolution continuum and the origin of life* by Baum et al. 2023. 
-
-<div style="text-align: center;">
-<img src="images/eco-evo.jpg" alt="eco"/>
+<div class="intro">
+  <div class="intro-person">
+    <img class="intro-avatar" src="{{ '/images/me.jpg' | relative_url }}" alt="{{ site.author.name }}">
+    <div class="intro-text">
+      <h1 class="intro-name">{{ site.author.name }}</h1>
+      <p class="intro-meta">{{ site.author.bio }}<br>{{ site.author.employer }} &middot; {{ site.author.location }}</p>
+    </div>
+  </div>
+  <div class="intro-logos">
+    <img src="{{ '/images/MSU.png' | relative_url }}" alt="Michigan State University" title="Michigan State University">
+    <img src="{{ '/images/NASA_logo.png' | relative_url }}" alt="NASA" title="NASA">
+    <img src="{{ '/images/NSF.png' | relative_url }}" alt="National Science Foundation" title="National Science Foundation">
+  </div>
 </div>
 
-<div style="text-align: center;">
-  <span style="font-size: smaller;">One of my favorite figures from the aformentioned paper, showing "A comparison of cellular (a) and ecosystem evolution (b)."</span>
+<p class="lede">I'm a PhD student at Michigan State University, pursuing a dual PhD in Computer Science and Ecology, Evolution, and Behavior, advised by <a href="https://cse.msu.edu/~dolsonem/">Emily Dolson</a>. My main focus these days is <a href="https://www.nebulous-design.org/">Nebulous</a>, where I'm the primary software developer and dev-team lead, evolving real spacecraft and instrument hardware. Evolutionary swarm robotics is where I started, and is now past work, below.</p>
+
+## Current work
+
+<div class="current-work-row">
+  <div class="project-card project-card--feature">
+    <div class="project-card__media">
+      <div class="stl-viewer" data-model="{{ '/assets/models/eclipse-run/' | relative_url }}" data-reverse="true">
+        <div class="stl-viewer__canvas-wrap">
+          <canvas class="stl-viewer__canvas"></canvas>
+          <p class="stl-viewer__status">Loading…</p>
+        </div>
+        <div class="stl-viewer__controls">
+          <button type="button" class="stl-viewer__play" aria-label="Play">&#9654;</button>
+          <input type="range" class="stl-viewer__slider" min="1" max="1" value="1" step="1" aria-label="Generation">
+          <span class="stl-viewer__label">0%</span>
+        </div>
+        <noscript><p class="media-note">Enable JavaScript to view this interactive 3D model.</p></noscript>
+      </div>
+      <p class="media-note">A satellite optimized for atmospheric drag in very low Earth orbit.</p>
+      <p class="media-hint">Drag to inspect design.</p>
+    </div>
+    <div class="project-card__body">
+      <h3>The Nebulous Collaboration</h3>
+      <p>Nebulous is a multi-institution research collaboration (NASA JPL, Michigan State, Ohio State, CU Boulder, and others), led by <strong>Dr. Julie Rolla</strong> (PI, NASA JPL), using evolutionary algorithms, AI, and physics-based simulation to design next-generation science hardware &mdash; antennas, spacecraft, and deployable structures that are high-performing, buildable, and mission-relevant.</p>
+      <p><strong>My role:</strong> Lead Software Developer, building and directing the small dev team behind <strong>ECLIPSE</strong>, the evolutionary computation framework the collaboration runs on.</p>
+      <p>Active sub-projects include <strong>SOAR</strong> (spacecraft aerodynamics in very low Earth orbit), <strong>FACET</strong> (antenna geometry optimization), <strong>LEO</strong> (antenna arrays), and <strong>ORIGAMI</strong> (deployable structures).</p>
+      <p><a href="https://www.nebulous-design.org/">nebulous-design.org &rarr;</a></p>
+    </div>
+  </div>
+
+  <div class="project-card project-card--compact">
+    <div class="project-card__media">
+      <div class="stl-viewer" data-model="{{ '/assets/models/antennas/' | relative_url }}" data-wireframe="false">
+        <div class="stl-viewer__canvas-wrap">
+          <canvas class="stl-viewer__canvas"></canvas>
+          <p class="stl-viewer__status">Loading…</p>
+        </div>
+        <div class="stl-viewer__controls">
+          <button type="button" class="stl-viewer__play" aria-label="Play">&#9654;</button>
+          <input type="range" class="stl-viewer__slider" min="1" max="1" value="1" step="1" aria-label="Generation">
+          <span class="stl-viewer__label">0%</span>
+        </div>
+        <noscript><p class="media-note">Enable JavaScript to view this interactive 3D model.</p></noscript>
+      </div>
+      <p class="media-note">An antenna optimized to match a specific gain pattern.</p>
+      <p class="media-hint">Drag to inspect design.</p>
+    </div>
+  </div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "{{ '/assets/js/vendor/three/three.module.js' | relative_url }}"
+    }
+  }
+  </script>
+  <script type="module" src="{{ '/assets/js/stl-viewer.js' | relative_url }}"></script>
 </div>
-<br>
 
-Emergence and Information Theory
-======
-Working with Clifford Bohm and Vincent Ragusa, we're developing a new theory of emergence. This paper might eventually see the light of day.
+## Past work
 
-<div style="text-align: center;">
-<img src="images/math.JPG" alt="math" width="300"/>
+<div class="project-grid">
+{% assign work_items = site.work | sort: 'order' %}
+{% for item in work_items %}
+  <a class="project-card project-card-link" href="{{ item.url | relative_url }}">
+    <div class="project-card__media">
+      <img src="{{ item.thumbnail | relative_url }}" alt="{{ item.title }}">
+    </div>
+    <div class="project-card__body">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.summary }}</p>
+      <p class="project-card__cta">Read more &rarr;</p>
+    </div>
+  </a>
+{% endfor %}
 </div>
