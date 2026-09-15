@@ -2,6 +2,7 @@
 # Derived from a private MENTEE_NAMES secret + Scholar data — no names
 # are ever written here, only the resulting counts.
 # Do not hand-edit — changes will be overwritten on the next run.
-mentees: 0
-mentee_authorships: 0
+
+mentees: 7
+mentee_authorships: 6
 first_author_mentee_papers: 0

@@ -1,2 +1,80 @@
 # Auto-generated from Google Scholar by .github/workflows/update-publications.yml
 # Do not hand-edit — changes will be overwritten on the next run.
+
+- title: "Applications of Evolutionary Algorithms for Instrument Design"
+  authors: "J Rolla, B Reynolds, J Weiler, D Wells, M Foreback, A Connolly, E Dolson, ..."
+  date: "2026"
+  venue: "Genetic Programming Theory and Practice XXII, 353-371, 2026"
+  url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AcTEViAAAAAJ&sortby=pubdate&citation_for_view=AcTEViAAAAAJ:_FxGoFyzp5QC"
+
+- title: "ECLIPSE: An Evolutionary Computation Library for Instrumentation Prototyping in Scientific Engineering"
+  authors: "M Foreback, E Imata, V Ragusa, J Weiler, J Sy, C Shao, J Wagner, ..."
+  date: "2026"
+  venue: "arXiv preprint arXiv:2601.05098, 2026"
+  url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AcTEViAAAAAJ&sortby=pubdate&citation_for_view=AcTEViAAAAAJ:WF5omc3nYNoC"
+
+- title: "A Methodology for Evolving Aerodynamically Optimal Spacecraft in the Free Molecular Flow Conditions of Very Low Earth Orbits"
+  authors: "J Rolla, R Marcusen, E Imata, E Dolson, M Foreback, K Helson, M Pilinski, ..."
+  date: "2026"
+  venue:
+  url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AcTEViAAAAAJ&sortby=pubdate&citation_for_view=AcTEViAAAAAJ:Se3iqnhoufwC"
+
+- title: "NEBULOUS: Applying Genetic Algorithms to Design Next-Generation Satellites for Drag Resilience"
+  authors: "R Marcusen, A Bryant, J Rolla, M Foreback, E Imata, E Dolson, K Helson, ..."
+  date: "2026"
+  venue:
+  url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AcTEViAAAAAJ&sortby=pubdate&citation_for_view=AcTEViAAAAAJ:roLk4NBRz8UC"
+
+- title: "Antenna Array Geometry Optimization Using a Genetic Algorithm"
+  authors: "KG Skocelas, J Weiler, A Connolly, M Foreback, E Dolson, A Hafez, ..."
+  date: "2026"
+  venue:
+  url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AcTEViAAAAAJ&sortby=pubdate&citation_for_view=AcTEViAAAAAJ:LkGwnXOMwfcC"
+
+- title: "Disentangling Swarm Behavior and Function: Improved Explainability via Information-Flow Diagrams and Controller Activation Patterns"
+  authors: "M Foreback, E Dolson, C Bohm"
+  date: "2025"
+  venue: "Artificial Life Conference Proceedings 37 2025 (1), 14, 2025"
+  url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AcTEViAAAAAJ&sortby=pubdate&citation_for_view=AcTEViAAAAAJ:eQOLeE2rZwMC"
+
+- title: "Leveraging heterogeneous controller representations for evolutionary swarm robotics"
+  authors: "M Foreback, C Bohm, E Dolson"
+  date: "2025"
+  venue: "2025 IEEE Symposium on Computational Intelligence in Artificial Life and …, 2025"
+  url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AcTEViAAAAAJ&sortby=pubdate&citation_for_view=AcTEViAAAAAJ:W7OEmFMy1HYC"
+
+- title: "Applications of Evolutionary Algorithms"
+  authors: "J Rolla, B Reynolds, J Weiler, D Wells, M Foreback, A Connolly, E Dolson, ..."
+  date: "2025"
+  venue: "Genetic Programming Theory and Practice XXII, 353, 2025"
+  url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AcTEViAAAAAJ&sortby=pubdate&citation_for_view=AcTEViAAAAAJ:ufrVoPGSRksC"
+
+- title: "Designing optimized antennas for science applications using evolutionary algorithms"
+  authors: "J Rolla, B Reynolds, J Weiler, D Wells, M Foreback, A Connolly, E Dolson, ..."
+  date: "2025"
+  venue: "Interplanet. Netw. Progr. Report 42, 242, 2025"
+  url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AcTEViAAAAAJ&sortby=pubdate&citation_for_view=AcTEViAAAAAJ:YsMSGLbcyi4C"
+
+- title: "Environmental connectivity influences the origination of adaptive processes"
+  authors: "J Shea, S Leither, M Foreback, E Dolson, A Lalejini"
+  date: "2024"
+  venue: "Artificial Life Conference Proceedings 36 2024 (1), 31, 2024"
+  url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AcTEViAAAAAJ&sortby=pubdate&citation_for_view=AcTEViAAAAAJ:Y0pCki6q_DkC"
+
+- title: "Interaction strengths affect whether ecological networks promote the initiation of egalitarian major transitions"
+  authors: "S Leither, M Foreback, DA Baum, E Dolson"
+  date: "2023"
+  venue: "Artificial Life Conference Proceedings 35 2023 (1), 73, 2023"
+  url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AcTEViAAAAAJ&sortby=pubdate&citation_for_view=AcTEViAAAAAJ:zYLM7Y9cAGgC"
+
+- title: "The role of abiotic parameters in the promotion of egalitarian major evolutionary transitions"
+  authors: "M Foreback, S Leither, DA Baum, E Dolson"
+  date: "2023"
+  venue: "Artificial Life Conference Proceedings 35 2023 (1), 78, 2023"
+  url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AcTEViAAAAAJ&sortby=pubdate&citation_for_view=AcTEViAAAAAJ:IjCSPb-OGe4C"
+
+- title: "Using evolutionary computation to find parameters that promote egalitarian major evolutionary transitions"
+  authors: "M Foreback, S Leither, E Dolson"
+  date: "2023"
+  venue: "Proceedings of the Companion Conference on Genetic and Evolutionary …, 2023"
+  url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AcTEViAAAAAJ&sortby=pubdate&citation_for_view=AcTEViAAAAAJ:Tyk-4Ss8FVUC"
