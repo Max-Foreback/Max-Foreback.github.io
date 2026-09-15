@@ -26,10 +26,6 @@ permalink: /teaching/
     <span class="stat-number">{{ site.data.mentoring.mentee_authorships }}</span>
     <span class="stat-label">mentee authorships</span>
   </div>
-  <div class="stat">
-    <span class="stat-number">{{ site.data.mentoring.first_author_mentee_papers }}</span>
-    <span class="stat-label">first-author mentee papers</span>
-  </div>
 </div>
 
 <p>Most of my mentees have worked on the Nebulous development team, contributing directly to and becoming co-authors on peer-reviewed publications from our work together. Many have gone on to further research or jobs in industry.</p>

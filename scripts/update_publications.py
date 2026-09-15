@@ -78,18 +78,19 @@ def fetch_citation_detail(api_key, citation_id):
     url = SERPAPI_URL + "?" + urllib.parse.urlencode(params)
     with urllib.request.urlopen(url) as resp:
         payload = json.load(resp)
+    if "error" in payload:
+        raise RuntimeError(payload["error"])
     return payload.get("citation", {})
 
 
 def enrich_with_full_authors(articles, api_key):
-    """Google Scholar's author-list view truncates long author lists with
-    '...'. The individual citation detail page (view_op=view_citation)
-    lists every author in full, so fetch it for anything truncated.
+    """The Scholar author-list API always abbreviates names to initials
+    (and appends '...' once a list is long enough to truncate). The
+    individual citation detail page (view_op=view_citation) has every
+    author's full name, so fetch it for every article unconditionally --
+    not just the ones with a visible '...' -- to get consistent full names.
     """
     for article in articles:
-        authors = article.get("authors", "")
-        if "..." not in authors and "…" not in authors:
-            continue
         citation_id = extract_citation_id(article.get("link", ""))
         if not citation_id:
             continue
@@ -175,27 +176,22 @@ def author_tokens(authors_string):
 
 
 def compute_mentoring_stats(articles, mentee_names):
+    # NOTE: first-author mentee papers was removed for now (to be re-added
+    # later) -- token_matches_mentee/author_tokens are still here to
+    # support it, just unused for that purpose at the moment.
     mentee_parts_list = [p for p in (split_name(n) for n in mentee_names) if p]
 
     mentee_authorships = 0
-    first_author_mentee_papers = 0
 
     for article in articles:
         tokens = author_tokens(article.get("authors", ""))
-        if not tokens:
-            continue
-
         for token in tokens:
             if any(token_matches_mentee(token, mp) for mp in mentee_parts_list):
                 mentee_authorships += 1
 
-        if any(token_matches_mentee(tokens[0], mp) for mp in mentee_parts_list):
-            first_author_mentee_papers += 1
-
     return {
         "mentees": len(mentee_names),
         "mentee_authorships": mentee_authorships,
-        "first_author_mentee_papers": first_author_mentee_papers,
     }
 
 
