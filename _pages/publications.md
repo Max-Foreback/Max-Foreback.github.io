@@ -14,7 +14,7 @@ permalink: /publications/
       {% if pub.url %}<a href="{{ pub.url }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}
     </span>
     <span class="pub-meta">{{ pub.venue }} &middot; {{ pub.date }}</span>
-    {% if pub.excerpt %}<p class="pub-excerpt">{{ pub.excerpt }}</p>{% endif %}
+    {% if pub.authors %}<p class="pub-authors">{{ pub.authors }}</p>{% endif %}
   </li>
 {% endfor %}
 </ul>
