@@ -7,8 +7,8 @@ My personal site, built as a small hand-written Jekyll site (no theme, no build 
 - `_config.yml` — site title/description, author info shown around the site, and the `work` collection definition
 - `_data/navigation.yml` — nav links
 - `_data/collaborators.yml`, `_data/awards.yml`, `_data/publications.yml` — the content behind those pages; edit these instead of touching HTML
-- `_pages/` — home, publications, collaborators, awards, teaching, 404 — written in Markdown with a little inline HTML for images/figures/components
-- `_work/` — one file per past/side project (e.g. swarm robotics, GENETIS); each becomes both a homepage card and its own page at `/work/<slug>/` with a prev/next pager. Front matter: `title`, `order` (sort position), `thumbnail`, `summary` (used on the homepage card); the body is the full write-up. Add a new project by adding a new file here — nothing else needs to change.
+- `_pages/` — home, publications, awards, teaching, 404 — written in Markdown with a little inline HTML for images/figures/components. `collaborators.md` also lives here but is currently excluded from the build (see below) — its content is untouched, it's just not being served right now.
+- `_work/` — one file per past/side project (e.g. swarm robotics, the eco-evolution continuum); each becomes both a homepage card and its own page at `/work/<slug>/` with a prev/next pager. Front matter: `title`, `order` (sort position), `thumbnail`, `summary` (used on the homepage card); the body is the full write-up. Add a new project by adding a new file here — nothing else needs to change.
 - `_layouts/default.html` (shell) and `work.html` (chains to `default`, adds the back-link + prev/next pager) + `_includes/head.html`, `sidebar.html` (nav/socials/theme toggle, persistent on desktop)
 - `assets/css/main.css` — all styling, including the light/dark theme variables
 - `assets/js/theme.js` — the dark-mode toggle
@@ -16,6 +16,25 @@ My personal site, built as a small hand-written Jekyll site (no theme, no build 
 - `assets/models/<name>/` — staged STL frame sequences for the 3D viewer
 - `images/` — photos and figures used across the site
 - `utils/` — one-off/maintenance scripts, not part of the site build
+
+## Adding a collaborator or student
+
+Add an entry to `_data/collaborators.yml` — it's one shared list for both, nothing else to change:
+
+```yaml
+- name: "Full Name"
+  picture: "their-photo.jpg"   # goes in images/; square photos crop best
+  description: "One line about them."
+  link: "https://their-site-or-profile"
+```
+
+They show up automatically on the Collaborators page (`/collaborators/`) in the order they're listed in the file.
+
+**That page is currently off** — `_config.yml`'s `exclude:` list has `_pages/collaborators.md` in it, and its nav link is removed from `_data/navigation.yml`. Nothing about the page or its data was deleted, so bringing it back is two small edits: delete that `exclude:` line, and re-add the nav entry:
+```yaml
+- title: "Collaborators"
+  url: /collaborators/
+```
 
 ## Adding a project image or GIF
 

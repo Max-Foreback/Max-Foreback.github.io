@@ -6,7 +6,7 @@ repository  : "Max-Foreback.github.io"
 
 author:
   name          : "Max Foreback"
-  bio           : "PhD student · Lead developer, Nebulous/ECLIPSE"
+  bio           : "PhD student · Lead Software Engineer, Nebulous Collaboration"
   location      : "East Lansing, MI, USA"
   employer      : "Michigan State University"
   email         : "foreba10@msu.edu"
@@ -21,6 +21,10 @@ exclude:
   - README.md
   - LICENSE
   - .claude
+  # Collaborators page is off for now (nav link removed too) — content in
+  # _pages/collaborators.md and _data/collaborators.yml is untouched, just
+  # remove this line to bring the page back.
+  - _pages/collaborators.md
 
 # Collections
 collections:

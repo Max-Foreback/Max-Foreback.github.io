@@ -5,11 +5,8 @@ main:
   - title: "Publications"
     url: /publications/
 
-  - title: "Teaching & Mentoring"
+  - title: "Teaching / Mentoring"
     url: /teaching/
-
-  - title: "Collaborators"
-    url: /collaborators/
 
   - title: "Awards"
     url: /awards/

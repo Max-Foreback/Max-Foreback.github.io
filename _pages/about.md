@@ -6,10 +6,17 @@ redirect_from:
 ---
 
 <div class="intro">
-  <img class="intro-avatar" src="{{ '/images/me.jpg' | relative_url }}" alt="{{ site.author.name }}">
-  <div class="intro-text">
-    <h1 class="intro-name">{{ site.author.name }}</h1>
-    <p class="intro-meta">{{ site.author.bio }} &middot; {{ site.author.employer }}<br>{{ site.author.location }}</p>
+  <div class="intro-person">
+    <img class="intro-avatar" src="{{ '/images/me.jpg' | relative_url }}" alt="{{ site.author.name }}">
+    <div class="intro-text">
+      <h1 class="intro-name">{{ site.author.name }}</h1>
+      <p class="intro-meta">{{ site.author.bio }}<br>{{ site.author.employer }} &middot; {{ site.author.location }}</p>
+    </div>
+  </div>
+  <div class="intro-logos">
+    <img src="{{ '/images/MSU.png' | relative_url }}" alt="Michigan State University" title="Michigan State University">
+    <img src="{{ '/images/NASA_logo.png' | relative_url }}" alt="NASA" title="NASA">
+    <img src="{{ '/images/NSF.png' | relative_url }}" alt="National Science Foundation" title="National Science Foundation">
   </div>
 </div>
 
@@ -32,11 +39,13 @@ redirect_from:
         </div>
         <noscript><p class="media-note">Enable JavaScript to view this interactive 3D model.</p></noscript>
       </div>
-      <p class="media-note">An evolved design, generation by generation &mdash; drag to rotate, scroll to zoom, or hit play.</p>
+      <p class="media-note">A satellite optimized for atmospheric drag in very low Earth orbit.</p>
+      <p class="media-hint">Drag to inspect design.</p>
     </div>
     <div class="project-card__body">
-      <h3>Nebulous &amp; ECLIPSE</h3>
-      <p>Nebulous is a research collaboration (NASA JPL, Michigan State, Ohio State, CU Boulder, and others) using evolutionary algorithms, AI, and physics-based simulation to design next-generation science hardware &mdash; antennas, spacecraft, and deployable structures that are high-performing, buildable, and mission-relevant. I lead development of <strong>ECLIPSE</strong>, the evolutionary computation framework the whole project runs on, and the small dev team building it.</p>
+      <h3>The Nebulous Collaboration</h3>
+      <p>Nebulous is a multi-institution research collaboration (NASA JPL, Michigan State, Ohio State, CU Boulder, and others), led by <strong>Dr. Julie Rolla</strong> (PI, NASA JPL), using evolutionary algorithms, AI, and physics-based simulation to design next-generation science hardware &mdash; antennas, spacecraft, and deployable structures that are high-performing, buildable, and mission-relevant.</p>
+      <p><strong>My role:</strong> Lead Software Developer, building and directing the small dev team behind <strong>ECLIPSE</strong>, the evolutionary computation framework the collaboration runs on.</p>
       <p>Active sub-projects include <strong>SOAR</strong> (spacecraft aerodynamics in very low Earth orbit), <strong>FACET</strong> (antenna geometry optimization), <strong>LEO</strong> (antenna arrays), and <strong>ORIGAMI</strong> (deployable structures).</p>
       <p><a href="https://www.nebulous-design.org/">nebulous-design.org &rarr;</a></p>
     </div>
@@ -56,7 +65,8 @@ redirect_from:
         </div>
         <noscript><p class="media-note">Enable JavaScript to view this interactive 3D model.</p></noscript>
       </div>
-      <p class="media-note">Evolved antenna designs, generation by generation.</p>
+      <p class="media-note">An antenna optimized to match a specific gain pattern.</p>
+      <p class="media-hint">Drag to inspect design.</p>
     </div>
   </div>
 

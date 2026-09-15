@@ -1,6 +1,6 @@
 ---
 title: "The ecology–evolution continuum"
-order: 3
+order: 2
 thumbnail: "/images/eco-evo.jpg"
 summary: "With Emily Dolson, Sydney Leither, and the Baum lab, modeled pre-genetic adaptive change — computational systems representative of early interactions between pre-biotic chemicals."
 ---
