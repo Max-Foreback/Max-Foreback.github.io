@@ -62,6 +62,52 @@ def fetch_articles(api_key):
     return articles
 
 
+def extract_citation_id(link):
+    query = urllib.parse.urlparse(link).query
+    values = urllib.parse.parse_qs(query).get("citation_for_view")
+    return values[0] if values else None
+
+
+def fetch_citation_detail(api_key, citation_id):
+    params = {
+        "engine": "google_scholar_author",
+        "view_op": "view_citation",
+        "citation_id": citation_id,
+        "api_key": api_key,
+    }
+    url = SERPAPI_URL + "?" + urllib.parse.urlencode(params)
+    with urllib.request.urlopen(url) as resp:
+        payload = json.load(resp)
+    return payload.get("citation", {})
+
+
+def enrich_with_full_authors(articles, api_key):
+    """Google Scholar's author-list view truncates long author lists with
+    '...'. The individual citation detail page (view_op=view_citation)
+    lists every author in full, so fetch it for anything truncated.
+    """
+    for article in articles:
+        authors = article.get("authors", "")
+        if "..." not in authors and "…" not in authors:
+            continue
+        citation_id = extract_citation_id(article.get("link", ""))
+        if not citation_id:
+            continue
+        try:
+            detail = fetch_citation_detail(api_key, citation_id)
+        except Exception as exc:
+            print(f"Warning: could not fetch full authors for '{article.get('title')}': {exc}", file=sys.stderr)
+            continue
+
+        full_authors = detail.get("authors") or detail.get("author")
+        if full_authors:
+            article["authors"] = full_authors
+        if not article.get("publication"):
+            venue = detail.get("journal") or detail.get("conference") or detail.get("publisher") or detail.get("source")
+            if venue:
+                article["publication"] = venue
+
+
 def escape(value):
     return value.replace('"', '\\"')
 
@@ -90,12 +136,32 @@ def normalize(s):
     return re.sub(r"[.\s]+", " ", s).strip().lower()
 
 
-def name_forms(full_name):
-    parts = full_name.split()
+def split_name(full_name):
+    parts = normalize(full_name).split()
     if len(parts) < 2:
-        return set()
-    first, last = parts[0], parts[-1]
-    return {normalize(f"{first[0]} {last}"), normalize(f"{first} {last}")}
+        return None
+    return parts[0], parts[-1]
+
+
+def component_match(mentee_part, token_part):
+    """Match two name components allowing either side to be a bare initial
+    -- Scholar truncates some author lists as 'First L' and others as
+    'F Last', so we can't assume which end is abbreviated.
+    """
+    if not mentee_part or not token_part:
+        return False
+    if len(mentee_part) == 1 or len(token_part) == 1:
+        return mentee_part[0] == token_part[0]
+    return mentee_part == token_part
+
+
+def token_matches_mentee(token, mentee_parts):
+    token_parts = normalize(token).split()
+    if len(token_parts) < 2:
+        return False
+    t_first, t_last = token_parts[0], token_parts[-1]
+    m_first, m_last = mentee_parts
+    return component_match(m_first, t_first) and component_match(m_last, t_last)
 
 
 def load_mentee_names():
@@ -103,24 +169,27 @@ def load_mentee_names():
     return [line.strip() for line in raw.splitlines() if line.strip()]
 
 
+def author_tokens(authors_string):
+    tokens = [t.strip() for t in authors_string.split(",") if t.strip()]
+    return [t for t in tokens if t not in ("...", "…")]
+
+
 def compute_mentoring_stats(articles, mentee_names):
-    mentee_forms = {name: name_forms(name) for name in mentee_names}
+    mentee_parts_list = [p for p in (split_name(n) for n in mentee_names) if p]
 
     mentee_authorships = 0
     first_author_mentee_papers = 0
 
     for article in articles:
-        tokens = [t.strip() for t in article.get("authors", "").split(",") if t.strip()]
+        tokens = author_tokens(article.get("authors", ""))
         if not tokens:
             continue
 
         for token in tokens:
-            token_norm = normalize(token)
-            if any(token_norm in forms for forms in mentee_forms.values()):
+            if any(token_matches_mentee(token, mp) for mp in mentee_parts_list):
                 mentee_authorships += 1
 
-        first_norm = normalize(tokens[0])
-        if any(first_norm in forms for forms in mentee_forms.values()):
+        if any(token_matches_mentee(tokens[0], mp) for mp in mentee_parts_list):
             first_author_mentee_papers += 1
 
     return {
@@ -143,6 +212,7 @@ def main():
         sys.exit(1)
 
     articles = fetch_articles(api_key)
+    enrich_with_full_authors(articles, api_key)
     articles.sort(key=sort_key, reverse=True)
 
     body = "\n\n".join(format_entry(a) for a in articles)

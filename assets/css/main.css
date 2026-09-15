@@ -608,9 +608,11 @@ a.project-card-link:hover {
   color: var(--muted);
   font-size: 0.9rem;
 }
-.pub-excerpt {
-  margin: 8px 0 0;
-  font-size: 0.95rem;
+.pub-authors {
+  margin: 6px 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  overflow-wrap: break-word;
 }
 
 /* ---------------------------------------------------------------------
