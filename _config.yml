@@ -1,11 +1,16 @@
 # Site settings
 title       : "Max Foreback"
-description : "Max Foreback — PhD student, Michigan State University"
+description : "Max Foreback is a PhD student at Michigan State University and lead software developer for the Nebulous collaboration with NASA JPL, using evolutionary computation to design spacecraft and antenna hardware."
 url         : https://max-foreback.github.io
 repository  : "Max-Foreback.github.io"
 
 author:
   name          : "Max Foreback"
+  first_name    : "Max"
+  last_name     : "Foreback"
+  avatar        : "/images/max-foreback.jpg"
+  job_title     : "PhD Student"
+  knows_about   : ["Evolutionary computation", "Evolutionary design", "Swarm robotics", "Artificial life", "Software engineering"]
   bio           : "PhD student · Lead Software Engineer, Nebulous Collaboration"
   location      : "East Lansing, MI, USA"
   employer      : "Michigan State University"
@@ -25,6 +30,11 @@ exclude:
   # _pages/collaborators.md and _data/collaborators.yml is untouched, just
   # remove this line to bring the page back.
   - _pages/collaborators.md
+  # Maintenance scripts and dependency files — not part of the site itself.
+  - scripts
+  - utils
+  - Gemfile
+  - Gemfile.lock
 
 # Collections
 collections:
@@ -48,6 +58,7 @@ defaults:
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-redirect-from
 
 markdown: kramdown
 kramdown:

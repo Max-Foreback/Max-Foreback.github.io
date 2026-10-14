@@ -1,6 +1,7 @@
 ---
 title: "Teaching / Mentoring"
 permalink: /teaching/
+description: "Max Foreback's teaching and mentoring at Michigan State University: CSE 431/830 Design and Theory of Algorithms, the Making a Game of It coding summer camp, and student research mentoring."
 ---
 
 ## Teaching

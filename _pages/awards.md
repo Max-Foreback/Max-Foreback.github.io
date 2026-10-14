@@ -1,6 +1,7 @@
 ---
 title: "Selected Awards"
 permalink: /awards/
+description: "Awards and fellowships received by Max Foreback, including the NSF Graduate Research Fellowship (GRFP) and the Michigan State University Distinguished Fellowship."
 ---
 
 <ul class="card-grid">

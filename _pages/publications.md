@@ -1,6 +1,7 @@
 ---
 title: "Publications"
 permalink: /publications/
+description: "Publications by Max Foreback on evolutionary computation, evolved antenna and spacecraft design (Nebulous, NASA JPL), and evolutionary swarm robotics."
 ---
 
 {% if site.author.googlescholar %}

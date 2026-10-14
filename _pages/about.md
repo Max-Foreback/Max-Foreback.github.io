@@ -1,5 +1,6 @@
 ---
 permalink: /
+head_title: "Max Foreback — PhD Student at Michigan State University"
 redirect_from:
   - /about/
   - /about.html
@@ -7,7 +8,7 @@ redirect_from:
 
 <div class="intro">
   <div class="intro-person">
-    <img class="intro-avatar" src="{{ '/images/me.jpg' | relative_url }}" alt="{{ site.author.name }}">
+    <img class="intro-avatar" src="{{ '/images/max-foreback.jpg' | relative_url }}" alt="{{ site.author.name }}">
     <div class="intro-text">
       <h1 class="intro-name">{{ site.author.name }}</h1>
       <p class="intro-meta">{{ site.author.bio }}<br>{{ site.author.employer }} &middot; {{ site.author.location }}</p>
