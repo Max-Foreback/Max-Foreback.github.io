@@ -53,6 +53,12 @@ defaults:
       type: work
     values:
       layout: work
+  # Google Search Console verification file — must still be served as-is,
+  # just not listed in sitemap.xml.
+  - scope:
+      path: "googleb6c0ceea58366914.html"
+    values:
+      sitemap: false
 
 # Plugins (GitHub Pages safe list)
 plugins:
